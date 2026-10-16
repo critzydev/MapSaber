@@ -67,7 +67,15 @@ and you'd prefer your maps not be used in future training, open an issue and the
 - **Don't submit AI maps for ranking.**
 - **Give it a playtest first.** You know what feels good to play better than any AI does.
 
+## A personal project
+
+MapSaber is a personal project, made in my spare time because I wanted to play the songs I like.
+**There are no promises of fixes, updates or release dates.** Issues and ideas are welcome, but I
+may not get to them, and things can change or stop at any time.
+
 ## Plans
+
+These are hopes, not promises:
 
 - Free to use.
 - An easy app, so you don't need a terminal.
