@@ -17,6 +17,11 @@ own PC.
 - **Lets you pick a style:** Speed, Mid-Speed, Acc, Tech, or Auto (it decides from the music).
 - **Lets you aim for a density** in notes per second, with an optional hard lock, so a calm song
   can stay calm and a fast one can go fast without turning into jumble.
+- **Follows the song's intensity:** denser where the song hits hard (bass hits, loudness), calmer
+  where it breathes.
+- **Can map "like" a map you love.** Point it at a map, and it leans toward that map's style
+  (streams, dots, jumps, how it builds intensity) without copying its notes.
+- **Lets you type the BPM** if you already know it.
 - **Can make named charts.** One song can get several styles (for example Speed, Tech and
   Mid-Speed), sorted into the difficulty slots from hardest to easiest.
 - **Lets you set the song name, cover image and mapper credit,** and puts the map straight into
@@ -31,22 +36,32 @@ breathes and add bursts where it picks up.
 
 A few things around the model keep maps playable:
 
+- **Sections that continue each other:** the song is written in overlapping sections, and each
+  one picks up exactly where the last left off. Your hand's direction, the pattern and the
+  instrument it follows all carry over.
+- **Flow:** while it writes, each hand's swings are kept in rhythm, dots included, so it doesn't
+  ask for backwards swings or resets. Turns that human mappers almost never use are avoided.
+  It learned which ones those are from thousands of human maps.
 - **Beat grid:** notes are snapped to the song's tempo, and the tempo is checked against the notes
   themselves.
-- **Flow:** while it writes, each hand's swings are kept in parity, so it doesn't ask for
-  backwards swings.
 - **Picking the best try:** each section is generated a few times, and the cleanest version is
   kept.
 
-On 12 test songs it had never seen, about 83% of the notes MapSaber placed landed on the same beats
-a human mapper chose.
+On 20 test songs it had never seen, about 84% of the notes MapSaber placed landed on the same beats
+a human mapper chose. Its density rises and falls with the human map's (a correlation of about
+0.85). Its own rule checks (parity, resets, awkward turns) flag very few problems. Those checks
+measure flow, not fun or musicality, and that's still where a great human map wins.
 
 ## Honest limitations
 
 - **Notes only for now.** No bombs, walls or lightshows yet.
 - **Expert and Expert+ only** so far.
-- **It still makes mistakes.** It sometimes gets a song's BPM wrong, and it has more resets than a
-  well-made human map.
+- **It still makes mistakes.** It sometimes gets a song's BPM wrong (about 1 song in 20 in
+  testing), and some patterns can feel repetitive or less intentional than a human's.
+- **The style reference is subtle for now.** It leans toward the reference map, but only a
+  little.
+- **Playtesting says: good, not great yet.** Feedback from actually playing the maps drives every
+  improvement.
 - **It isn't a replacement for human mappers.** A great human map has intent and care that an AI
   doesn't. MapSaber is for songs that would otherwise have no map at all.
 
@@ -79,7 +94,8 @@ These are hopes, not promises:
 
 - Free to use.
 - An easy app, so you don't need a terminal.
-- Bombs, walls, lower difficulties, and fewer resets.
+- Bombs, walls and lower difficulties.
+- More training data, and a stronger "map like this map".
 
 ## Credits
 
